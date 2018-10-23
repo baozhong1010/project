@@ -1,0 +1,13 @@
+python -m pip install --upgrade pip -i https://pypi.mirrors.ustc.edu.cn/simple/
+pip install Scrapy==1.5.0 -i https://pypi.tuna.tsinghua.edu.cn/simple/
+pip install PyMySQL==0.8.1 -i https://pypi.tuna.tsinghua.edu.cn/simple/
+pip install pyOpenSSL==18.0.0 -i https://pypi.tuna.tsinghua.edu.cn/simple/
+pip install bs4==0.0.1 -i https://pypi.tuna.tsinghua.edu.cn/simple/
+pip install beautifulsoup4==4.6.0 -i https://pypi.tuna.tsinghua.edu.cn/simple/
+pip install autopep8==1.3.5 -i https://pypi.tuna.tsinghua.edu.cn/simple/
+pip install lxml==4.2.1 -i https://pypi.tuna.tsinghua.edu.cn/simple/
+pip install six==1.10.0 -i https://pypi.tuna.tsinghua.edu.cn/simple/
+pip install urllib3==1.23 -i https://pypi.tuna.tsinghua.edu.cn/simple/
+pip install twilio==6.15.2 -i https://pypi.tuna.tsinghua.edu.cn/simple/
+pip install Twisted==18.4.0 -i https://pypi.tuna.tsinghua.edu.cn/simple/
+pip install requests==2.19.1 -i https://pypi.tuna.tsinghua.edu.cn/simple/
