@@ -38,7 +38,7 @@ class NewCninfoItem_cn(scrapy.Item):  #国内基本资料
 
 class NewCninfoItem_cn_hk(scrapy.Item):   #香港基本资料
     stock_code = scrapy.Field()  # 股票代码
-    stock_name = scrapy.Field()# 股票简称
+    stock_abb_name = scrapy.Field()# 股票简称
     address = scrapy.Field() # 公司地址
     main_business = scrapy.Field() # 主营业务
     chairman = scrapy.Field() # 主席

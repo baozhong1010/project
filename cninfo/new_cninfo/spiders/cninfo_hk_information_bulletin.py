@@ -16,7 +16,7 @@ from new_cninfo.spiders import stock_code
 class Cninfo_hk_information_bulletin(scrapy.Spider):
 
     '''
-    章程制度
+    信息公告
     '''
 
     name = 'cninfo_hk_infomation'
@@ -49,7 +49,7 @@ class Cninfo_hk_information_bulletin(scrapy.Spider):
             part = response.meta['part']
             File_Path = rf'E:\cninfo\市场资讯\上市公司\{part}\信息概况\{tuple_text[5]}/'  # 生产环境
             # File_Path = rf'Z:\cninfo\市场资讯\上市公司\{part}\信息概况\{tuple_text[5]}/'   #本地测试
-            file_name = tuple_text[2] + download_base_url.split('/')[-1]
+            file_name = download_base_url.split('/')[-1]
             r = requests.get(download_base_url, stream=True)
             if not os.path.exists(File_Path):
                 os.makedirs(File_Path)
@@ -74,7 +74,7 @@ class Cninfo_hk_information_bulletin(scrapy.Spider):
                 part = response.meta['part']
                 File_Path = rf'E:\cninfo\市场资讯\上市公司\{part}\信息概况\{tuple_text[5]}/'  #生产环境
                 # File_Path = rf'Z:\cninfo\市场资讯\上市公司\{part}\信息概况\{tuple_text[5]}/'   #本地测试
-                file_name = tuple_text[2]+download_base_url.split('/')[-1]
+                file_name = download_base_url.split('/')[-1]
                 r = requests.get(download_base_url, stream=True)
                 if not os.path.exists(File_Path):
                     os.makedirs(File_Path)

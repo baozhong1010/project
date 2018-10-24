@@ -65,10 +65,10 @@ class CninfocrawlerSpider(scrapy.Spider):
                 yield self.request(url=szcn_url, tag=tag,abb_name=code[2],stock_code=code[0])
 
             elif '香港主板' in code:
-                yield Request(hk_detail_base_url + code[0] + '.html', callback=self.parse_cn_hk)
+                yield Request(hk_detail_base_url + code[0] + '.html', callback=self.parse_cn_hk,meta={'stock_code':code[0],'abb_name':code[2]})
 
             elif '香港创业板' in code and int(code[0]) > 8000:
-                yield Request(hk_gem_url + code[0] + '.html', callback=self.parse_cn_hk)
+                yield Request(hk_gem_url + code[0] + '.html', callback=self.parse_cn_hk,meta={'stock_code':code[0],'abb_name':code[2]})
 
     def parse_cn_brief(self, response):# 内陆企业概况
         items = NewCninfoItem_cn()

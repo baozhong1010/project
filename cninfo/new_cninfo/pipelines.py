@@ -69,7 +69,7 @@ class NewCninfoPipeline(object):
                         'on duplicate key update chairman=%s,market_capitalisation=%s,earning_per_share=%s,Net_assetvalue=%s,indicator=%s '
             lis = (
                 item['stock_code'],
-                item['stock_name'],
+                item['stock_abb_name'],
                 item['address'],
                 item['main_business'],
                 item['chairman'],
@@ -448,7 +448,7 @@ class NewCninfofinPipeline(object):
                                  item['issuance_method'],))
 
         elif isinstance(item, BeiwangItem):
-            sql = "insert into cninfo_bond_bond_memo values (%s,now(),%s,%s)"
+            sql = "replace into cninfo_bond_bond_memo values (%s,now(),%s,%s)"
             save_to_sql(sql, (item['code'], item['bond_event'], item['bond_time']))
 
         elif isinstance(item, AnnouncementItem):

@@ -31,8 +31,6 @@ class StockCode(object):
         sql = 'select stock_code,part,abb_name from cninfo_listed_company'
         self.cor.execute(sql)
         fetchall = self.cor.fetchall()
-        self.cor.close()
-        self.conn.close()
         return fetchall
 
     def post_data(self):  #财务指标 data 数据构造
@@ -94,7 +92,7 @@ class StockCode(object):
                 'stock':stock_code1 ,
                 'searchkey': '',
                 'category': x[1],
-                'column': column,  # 区分类型  :
+                'column': x[0],  # 区分类型  :
                 'pageNum': '',
                 'pageSize': '30',
                 'tabName': 'fulltext',

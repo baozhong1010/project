@@ -32,14 +32,15 @@ class Cninfo_charter_system_Spider(scrapy.Spider):
         code_list = stock_code.StockCode().stock_code_fetchall()  # 数据库入口:股票代码:元组
         tag_dict = {'gzzd':'gzzd1y','gszc':'gszc1y'}
         for code in code_list:  #遍历股票代码
-            for tag_key,tag_value in tag_dict.items():   #遍历字典
-                if tag_key == 'gszc':
-                    base_url1 = f'http://www.cninfo.com.cn//disclosure/{tag_key}/stocks/{tag_value}/cninfo/{code[0]}.js?ver=201809111727'
-                    yield Request(base_url1, callback=self.parse,
-                                  meta={'abb_name': code[2], 'stock_code': code[0], 'part': code[1]}, encoding='gbk')
-                else:
-                    base_url = f'http://www.cninfo.com.cn//disclosure/{tag_key}/stocks/{tag_value}/{code[0]}.js?ver=201809111727'
-                    yield Request(base_url,callback=self.parse,meta={'abb_name':code[2],'stock_code':code[0],'part':code[1]},encoding='gbk')
+            if code[1] != '香港主板' or '香港创业板':
+                for tag_key,tag_value in tag_dict.items():   #遍历字典
+                    if tag_key == 'gszc':
+                        base_url1 = f'http://www.cninfo.com.cn//disclosure/{tag_key}/stocks/{tag_value}/cninfo/{code[0]}.js?ver=201809111727'
+                        yield Request(base_url1, callback=self.parse,
+                                      meta={'abb_name': code[2], 'stock_code': code[0], 'part': code[1]}, encoding='gbk')
+                    else:
+                        base_url = f'http://www.cninfo.com.cn//disclosure/{tag_key}/stocks/{tag_value}/{code[0]}.js?ver=201809111727'
+                        yield Request(base_url,callback=self.parse,meta={'abb_name':code[2],'stock_code':code[0],'part':code[1]},encoding='gbk')
 
     def parse(self, response):   #解析
         res = requests.get(response.url)  #重新请求，解决乱码问题

@@ -2,7 +2,6 @@ import requests
 from bs4 import BeautifulSoup
 import re
 import pymysql
-import schedule
 import time
 import json
 # 公司名称,简称,股票代码,上市板块
@@ -137,7 +136,3 @@ class JuChao(object):
 if __name__ == '__main__':
     juchao = JuChao()
     juchao.main()
-    schedule.every().monday.do(juchao.main)
-    while True:
-        schedule.run_pending()
-        time.sleep(1)
