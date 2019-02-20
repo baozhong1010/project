@@ -1,6 +1,6 @@
 巨潮资讯爬虫
 
-AUTH : 杜建业
+AUTH : 包忠
 UPDATE: 20180911
 
 python -V = 3.6.4
